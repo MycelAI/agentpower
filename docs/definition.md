@@ -77,7 +77,7 @@ Cost of 5 AP (new model):  1 salary + 4 × token fuel
 
 The first AP still costs a salary — you need the human operator. Each *additional* AP above that costs only token fuel. At budget model tier (€16/AP/year) 4 additional APs add just €64. Even at frontier pricing (€560/AP/year for Claude Opus) the total remains ~€64,240 — an 80% reduction versus five salaries. This is the structural economic shift.
 
-See the [EUR/AP pricing table](index.html) for the full per-model breakdown and methodology.
+See the [EUR/AP pricing table](https://mycel-ai.de/agentpower) for the full per-model breakdown and methodology.
 
 ## Scope
 

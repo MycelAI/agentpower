@@ -11,5 +11,5 @@
 The essay introduces the agentpower concept, the AP Ratio, the EUR/AP methodology, and the historical parallel with horsepower and the Industrial Revolution.
 
 For the formal definition, see [definition.md](definition.md).
-For the EUR/AP pricing methodology, see [index.html](index.html).
+For the EUR/AP pricing methodology, see [mycel-ai.de/agentpower](https://mycel-ai.de/agentpower).
 For the FAQ, see [faq.md](faq.md).

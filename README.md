@@ -72,7 +72,7 @@ New model:  5 AP = 1 salary + 4 × token budget → ~€62,064–€64,240/year
 
 The additional agentpower (AP 2 through AP N) comes from tokens. The EUR/AP methodology shows the annual token cost for one full additional AP ranges from **€16 to €560/year** depending on model tier — so 4 additional APs cost €64–€2,240/year in fuel. Even at Claude Opus pricing, the new model is ~80% cheaper than five salaries. The human operator remains essential: they provide judgement, direction, context, and accountability. The AI provides scale.
 
-See the [EUR/AP methodology](docs/definition.md) for the full per-model breakdown and pricing derivation.
+See the [EUR/AP pricing methodology](https://mycel-ai.de/agentpower) for the full per-model breakdown and pricing derivation.
 
 ---
 
