@@ -65,11 +65,12 @@ Where **Labour** is human headcount and **Fuel** is AI token expenditure directe
 ## The Economics
 
 ```
-Old model:  5 AP = 5 salaries            → ~€310,000/year
-New model:  5 AP = 1 salary + token fuel  → ~€62,000/year
+Old model:  5 AP = 5 salaries                  → ~€310,000/year
+New model:  5 AP = 1 salary + 4 × token budget → ~€62,064–€64,240/year
+                   (€62,000 salary + €64–€2,240 in token fuel for 4 additional APs)
 ```
 
-The additional agentpower (AP 2 through AP N) comes from tokens. The EUR/AP methodology shows the annual token cost for one full additional AP ranges from **€16 to €560/year** depending on model tier — at the Standard Cognitive Workday (200K tokens/day, 250 working days). The human operator remains essential: they provide judgement, direction, context, and accountability. The AI provides scale.
+The additional agentpower (AP 2 through AP N) comes from tokens. The EUR/AP methodology shows the annual token cost for one full additional AP ranges from **€16 to €560/year** depending on model tier — so 4 additional APs cost €64–€2,240/year in fuel. Even at Claude Opus pricing, the new model is ~80% cheaper than five salaries. The human operator remains essential: they provide judgement, direction, context, and accountability. The AI provides scale.
 
 See [EUR/AP Pricing →](docs/index.html) for the full per-model breakdown.
 

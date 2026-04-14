@@ -65,16 +65,17 @@ The key insight: the relationship between L and T is multiplicative, not additiv
 ## Cost Structure
 
 ```
-Cost of 1 AP (old model):  1 full-time salary
-                           EU median: ~€48,000 gross / ~€62,000 total employer cost/year
+Cost of 5 AP (old model):  5 full-time salaries
+                           5 × ~€62,000 = ~€310,000/year
 
-Cost of 1 AP (new model):  Fraction of salary + token fuel
-                           Marginal AP cost: €16–€560/year in tokens depending on model tier
-                           (Standard Cognitive Workday: 200K tokens/day × 250 working days)
-                           (at April 2026 published API pricing, converted at €1 = $1.09)
+Cost of 5 AP (new model):  1 salary + 4 × token fuel
+                           €62,000 (operator) + €64–€2,240 (4 APs via tokens)
+                           = €62,064–€64,240/year total
+                           (token range: €16–€560/AP/year depending on model tier)
+                           (SCW: 200K tokens/day × 250 working days · €1 = $1.09)
 ```
 
-The first AP still costs a salary — you need the human operator. Each additional AP costs only tokens. This is the structural economic shift.
+The first AP still costs a salary — you need the human operator. Each *additional* AP above that costs only token fuel. At budget model tier (€16/AP/year) 4 additional APs add just €64. Even at frontier pricing (€560/AP/year for Claude Opus) the total remains ~€64,240 — an 80% reduction versus five salaries. This is the structural economic shift.
 
 See the [EUR/AP pricing table](index.html) for the full per-model breakdown and methodology.
 
