@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+title: "Agentpower: A Unit of Cognitive Work Output for the AI Age"
+message: "If you use or reference this framework, please cite it as below."
+type: article
+authors:
+  - given-names: Alphin
+    family-names: Tom
+    email: alphin@mycel-ai.de
+    affiliation: "Mycel UG (haftungsbeschränkt)"
+    orcid: ""
+date-released: "2026-04-14"
+url: "https://medium.com/alphin-pale-blue-dot/horsepower-then-agentpower-now-5bbeffabf3ef"
+repository-code: "https://github.com/MycelAI/agentpower"
+license: CC-BY-SA-4.0
+keywords:
+  - agentpower
+  - AI productivity
+  - cognitive work
+  - production function
+  - knowledge work
+  - AI tokens
+abstract: >-
+  Agentpower (AP) is a unit of cognitive work output measuring the total
+  annual output of one knowledge worker. One AP equals the cognitive output
+  of one full-time knowledge worker, unaided by AI, over one year. The AP
+  Ratio (Total Cognitive Output / Human Headcount) provides a universal
+  metric for AI-augmented productivity across professions and sectors.
+  Introduced in the essay "Horsepower Then, Agentpower Now" (Pale Blue Dot,
+  April 2026).
