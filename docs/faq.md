@@ -1,57 +1,81 @@
 # Frequently Asked Questions
 
-## The Concept
+## The concept
 
-**Why do we need a new unit? Can't we just use "revenue per employee"?**
+**Why a new unit? Isn't revenue per employee enough?**
 
-Revenue per employee conflates too many variables: pricing power, market conditions, product mix, geographic cost differences. It tells you something about a business but nothing specific about AI-augmented productivity. Agentpower isolates the question: how much cognitive work does each human on your team produce, relative to what they'd produce unaided? That's the question this era demands an answer to.
+Revenue per employee moves with prices, growth, product mix and outsourcing. In the simulation it ranked organisations' true AP with a correlation of only 0.26 and overstated gains 2.5-fold. Agentpower isolates one question: how much more value does each FTE deliver than the same role did without AI?
 
-**Isn't this just "productivity" with a new name?**
+**Isn't this just productivity with a new name?**
 
-Productivity is a broad economic concept measured in many ways. Agentpower is specific: it benchmarks AI-augmented cognitive output against a defined human baseline. The specificity is the point. "Productivity" is too vague to drive decisions. "Our AP ratio is 1.2 and our competitor's is 3.5" drives decisions.
+It is a specific, auditable productivity ratio for one cause and one kind of work. "Productivity" covers everything; "AP-Q 1.14 [1.02–1.27] for claims handling" says what changed, by how much and how sure we are.
 
-**How is this different from FTE-equivalents?**
+**How is it different from FTE-equivalents?**
 
-FTE-equivalents measure staffing capacity. Agentpower measures actual output. A team of 5 at 4 AP each produces 20 AP of output, equivalent to a 20-person team operating without AI. FTEs would count 5 heads. The AP ratio captures the amplification that FTE counts miss entirely.
+FTE counts capacity you pay for. AP counts output you get per unit of it. A 20-FTE team at AP-Q 1.25 delivers what 25 FTE did before.
+
+**Why did the typical AP ratio fall from 3–10 to about 1.05?**
+
+Because 1.0 read task-level speed-ups as job-level ones. AI often makes a single task two to five times faster. But a job is many tasks, AI is used on some of them, checking takes time back, and saved time doesn't all become output. Amdahl's law does the rest: to reach AP 3, AI must remove two thirds of a role's working time and every minute of it must be reused. The best population studies find 3–5% of hours saved. See [evidence.md](evidence.md).
+
+**So is AI overhyped?**
+
+No. A team at AP 1.3 delivers 30% more with the same people, and an extra AP still costs two to five times less through AI than through hiring. Agentic frontier teams in the simulation reach 1.5–2. Capabilities are compounding quickly. The point of a unit is to see the change as it happens, not to assume it.
 
 ## Measurement
 
-**How do you actually measure cognitive output?**
+**How do you actually measure it?**
 
-This is the hardest question, and the honest answer is: imperfectly, for now. Different professions will need domain-specific proxies. For lawyers: contracts drafted, cases managed, filings completed. For engineers: calculations run, designs reviewed, specifications written. For consultants: deliverables produced, analyses completed. The framework is deliberately simple at this stage to encourage adoption. Better measurement methodologies will follow, just as the precise definition of horsepower was refined over decades after Watt's initial estimate.
+Count effort-weighted deliverables per FTE, have a blind panel score a random sample for value, and compare with a baseline and ideally a control group (AP-Q). Separately, time a sample of tasks with and without AI to get capacity (AP-C). The protocol is in [measurement.md](measurement.md); a worksheet is in [ap-calculator.md](../examples/ap-calculator.md).
 
-**Isn't this just measuring quantity, not quality?**
+**Why not just ask managers?**
 
-The definition assumes that output meets or exceeds baseline quality standards. 5 AP of error-filled work is not 5 AP. Quality is a precondition, not a separate metric. In practice, AI-augmented work that is properly supervised often exceeds baseline quality because the AI catches errors, ensures consistency, and enables more thorough review.
+People overestimate. In the METR 2025 trial, experienced developers believed AI made them 20% faster when it made them 19% slower. In the simulation, manager estimates overstated the gain 3.4-fold.
 
-**Can you game the AP ratio?**
+**Why not use token consumption? It's easy to measure.**
 
-Yes, the same way you can game any metric. That's why agentpower explicitly measures *output*, not *input*. Tokenmaxxing (maximising token consumption as a proxy for productivity) is the wrong metric for the same reason that measuring coal consumption was the wrong metric. The term emerged from an episode in March 2026 when a Meta employee created an internal leaderboard ranking colleagues by token consumption — some reportedly left AI sessions running idle overnight to inflate their numbers. The leaderboard was removed within days. Agentpower resists this class of gaming by anchoring to output, not fuel.
+Tokens per unit of work vary a hundredfold between models and working styles, and token counts are gamed as soon as they are ranked. Meta's internal "Claudeonomics" leaderboard (April 2026) was shut within days. In simulation, the 1.0 token conversion overstated gains more than a hundredfold and almost tripled when gamed.
+
+**Isn't quality subjective?**
+
+Partly, which is why the audit is blind, uses a fixed rubric per role, and compares samples from both periods scored by the same reviewers. It is less subjective than assuming quality holds.
+
+**How precise is it?**
+
+For one team in one period, about ±12% with 80 audited deliverables and effort-weighted counts. You can tell 1.0 from 1.3, not 1.05 from 1.10. Pool teams or periods for finer distinctions.
+
+**Can it be gamed?**
+
+Every metric can. AP-Q moved +8% under the simulated gaming incentive, against +40% for raw counts and +184% for tokens, because splitting work lowers each item's audited value. Keep reviewers blind and rotate them.
+
+**Can AP be below 1?**
+
+Yes, and it should be reported when it is. Outside the "jagged frontier" AI costs time and accuracy. About 15% of individual workers in a typical 2026 organisation end up below 1.0 in the simulation.
 
 ## Implications
 
 **Does a high AP ratio mean fewer jobs?**
 
-Not necessarily. A high AP ratio means more output per person. Historically, productivity gains have expanded total economic output rather than shrinking total employment, though they do change *which* jobs exist. The steam engine eliminated some roles and created others that were unimaginable before it. The same pattern is likely here, with the critical caveat that the transition period is painful for those displaced, and institutions have a responsibility to support them.
+Not necessarily. It means more output per FTE. Whether that becomes more output or fewer people depends on demand and on choices organisations make. The Danish register study found no effect on earnings or hours so far. Transitions are still painful for the people they displace, and institutions carry responsibility for them.
 
-**Is this only relevant for large companies?**
+**Is this only for large companies?**
 
-The opposite. Large companies have always been able to scale by hiring. The AP ratio matters most for smaller organisations, because it means a team of 10 can now produce the output of a team of 40. That's a structural advantage for lean, well-run organisations that couldn't previously compete on scale.
+No. A small team can run the protocol on one role in two weeks. The advantage of amplification goes to whoever turns saved time into value, which is a question of management more than of size.
 
 **What about professions where human presence is the product?**
 
-Psychotherapy, surgery, teaching young children, eldercare, live performance: these involve human presence and relationship as core value. Agentpower applies to the cognitive components of these roles (documentation, planning, research, administration) but not to the relational core. A therapist at 3 AP isn't seeing three times more patients with less attention. They're spending less time on notes and more time with the person in front of them.
+Therapy, surgery, nursing, teaching young children: AP applies to their cognitive components only (documentation, planning, research). A therapist with faster notes isn't seeing more patients with less attention; they are spending more of the hour with the person in front of them.
 
-## The Term
+## The term
 
-**Why "agent" and not "brain" or "mind" or "cognitive"?**
+**Why "agent"?**
 
-"Agent" uniquely bridges both eras. It refers to the human roles being amplified (agents who act on behalf of others) and the AI systems doing the amplifying (AI agents). No other word carries this double meaning. It also has clean Latin roots (*agere*: to act) and translates naturally across languages.
+It bridges both eras: the human agents whose work is being amplified (lawyers, brokers, administrators) and the AI agents doing the amplifying. From Latin *agere*, to act.
 
-**Should "agentpower" be one word or two?**
+**One word or two?**
 
-One word, lowercase in running text, capitalised at the start of a sentence. Abbreviated as AP. Following the convention of "horsepower" (one word, abbreviated as HP).
+One word, lowercase in running text, abbreviated AP, following "horsepower".
 
-**Is this trademarked?**
+**Is it trademarked?**
 
-No. The term is explicitly released into the public domain. The goal is universal adoption, not ownership.
+No. The word and the ideas are free for anyone to use. The text is CC BY-SA 4.0 and the code is MIT.

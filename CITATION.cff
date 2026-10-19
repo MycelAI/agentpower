@@ -1,29 +1,44 @@
 cff-version: 1.2.0
 title: "Agentpower: A Unit of Cognitive Work Output for the AI Age"
 message: "If you use or reference this framework, please cite it as below."
-type: article
+type: software
+version: 2.0.0
+date-released: "2026-10-19"
 authors:
   - given-names: Alphin
     family-names: Tom
     email: alphin@mycel-ai.de
     affiliation: "Mycel UG (haftungsbeschränkt)"
-    orcid: ""
-date-released: "2026-04-14"
-url: "https://medium.com/alphin-pale-blue-dot/horsepower-then-agentpower-now-5bbeffabf3ef"
+url: "https://mycel-ai.de/agentpower"
 repository-code: "https://github.com/MycelAI/agentpower"
-license: CC-BY-SA-4.0
+license:
+  - CC-BY-SA-4.0
+  - MIT
 keywords:
   - agentpower
   - AI productivity
-  - cognitive work
-  - production function
   - knowledge work
-  - AI tokens
+  - measurement
+  - production function
+  - Monte Carlo simulation
 abstract: >-
-  Agentpower (AP) is a unit of cognitive work output measuring the total
-  annual output of one knowledge worker. One AP equals the cognitive output
-  of one full-time knowledge worker, unaided by AI, over one year. The AP
-  Ratio (Total Cognitive Output / Human Headcount) provides a universal
-  metric for AI-augmented productivity across professions and sectors.
-  Introduced in the essay "Horsepower Then, Agentpower Now" (Pale Blue Dot,
-  April 2026).
+  Agentpower (AP) is a unit of cognitive work output. One AP is the
+  quality-adjusted output of one full-time-equivalent year of knowledge work
+  in a given role, at that role's productivity without generative AI.
+  Specification 2.0 defines two standard measures, realised AP (AP-Q:
+  audited output per FTE against a control group) and capacity AP (AP-C: a
+  task-based Amdahl bound), recalibrates the stage bands to the 2023-2026
+  evidence, and replaces the token-based cost method with a cost per measured
+  AP gain. The choice of methods is supported by a reproducible Monte Carlo
+  study included in the repository.
+preferred-citation:
+  type: report
+  title: "Agentpower: A Unit of Cognitive Work Output for the AI Age. Specification 2.0"
+  authors:
+    - given-names: Alphin
+      family-names: Tom
+  institution:
+    name: "Mycel UG (haftungsbeschränkt)"
+  year: 2026
+  month: 10
+  url: "https://github.com/MycelAI/agentpower"
