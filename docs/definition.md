@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 Alphin Tom / Mycel UG (haftungsbeschränkt)
+
+SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+
 # Agentpower: Formal Definition
 
 Specification 2.0 · October 2026 · supersedes 1.0 (April 2026)

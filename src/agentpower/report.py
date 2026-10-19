@@ -1,8 +1,31 @@
+# SPDX-FileCopyrightText: 2026 Alphin Tom / Mycel UG (haftungsbeschränkt)
+#
+# SPDX-License-Identifier: MIT
+
 """Render experiment results as docs/simulation-results.md (+ optional SVG figures)."""
 
 from __future__ import annotations
 
 from pathlib import Path
+
+
+FIGURES = (
+    ("methods", "Bar charts comparing eight measurement methods: measured gain over true gain, "
+                "and inflation when the metric is gamed. The controlled quality methods (AP-Q) and AP-C come close to 1 "
+                "with 8% inflation; the v1 token method overstates gains 143-fold."),
+    ("calibration", "Range chart of AP ratios by scenario: typical 2026 about 1.02, integrated team 1.14, "
+                    "agentic frontier 1.75; the v1.0 'typical' range of 3 to 10 is reached only by a "
+                    "speculative full-delegation scenario."),
+    ("cost-curve", "Log-log line chart of marginal cost per extra AP against AI spend per FTE: it falls "
+                   "to about 24,000 euros, stays below the 85,000-euro cost of a hire, then rises steeply; "
+                   "the v1.0 claim of 16 to 560 euros lies far below the curve."),
+)
+
+
+def picture(base: str, name: str, alt: str) -> str:
+    """GitHub-compatible light/dark figure."""
+    return (f'<picture><source media="(prefers-color-scheme: dark)" srcset="{base}/{name}-dark.svg">'
+            f'<img src="{base}/{name}.svg" alt="{alt}" width="760"></picture>')
 
 
 def _table(header: list[str], rows: list[list]) -> str:
@@ -106,12 +129,17 @@ def write_report(r: dict, path: Path, figures: Path | None = None) -> None:
         "",
     ]
     if figures is not None and _figures(r, figures):
-        rel = "figures"
-        md[4:4] = [f"![Measurement concepts]({rel}/methods.svg)",
-                   f"![AP distribution]({rel}/calibration.svg)",
-                   f"![Cost curve]({rel}/cost-curve.svg)", ""]
+        md[4:4] = [picture("figures", name, alt) for name, alt in FIGURES] + [""]
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(md), encoding="utf-8")
+
+
+THEMES = {
+    "": {"ink": "#1f2a37", "accent": "#0d9488", "muted": "#9ca3af", "grid": "#d1d5db",
+         "warn": "#fee2e2", "warn_ink": "#991b1b"},
+    "-dark": {"ink": "#e5e7eb", "accent": "#2dd4bf", "muted": "#6b7280", "grid": "#374151",
+              "warn": "#450a0a", "warn_ink": "#fca5a5"},
+}
 
 
 def _figures(r: dict, out: Path) -> bool:
@@ -123,9 +151,22 @@ def _figures(r: dict, out: Path) -> bool:
     except ImportError:
         return False
     out.mkdir(parents=True, exist_ok=True)
-    plt.rcParams.update({"font.size": 9, "svg.hashsalt": "agentpower", "axes.spines.top": False,
-                         "axes.spines.right": False})
-    ink, accent, muted = "#1f2a37", "#0f766e", "#9ca3af"
+    for suffix, t in THEMES.items():
+        plt.rcParams.update({
+            "font.size": 9, "svg.hashsalt": "agentpower", "svg.fonttype": "none",
+            "font.family": "sans-serif", "font.sans-serif": ["DejaVu Sans"],
+            "axes.spines.top": False, "axes.spines.right": False,
+            "figure.facecolor": "none", "axes.facecolor": "none", "savefig.transparent": True,
+            "text.color": t["ink"], "axes.labelcolor": t["ink"], "axes.edgecolor": t["muted"],
+            "xtick.color": t["ink"], "ytick.color": t["ink"], "legend.labelcolor": t["ink"],
+        })
+        _draw(r, out, suffix, t, plt)
+    return True
+
+
+def _draw(r: dict, out: Path, suffix: str, t: dict, plt) -> None:
+    ink, accent, muted = t["ink"], t["accent"], t["muted"]
+    meta = {"Date": None, "Creator": "agentpower simulate"}
 
     rows = r["e1"][::-1]
     names = [m["method"].split(" (")[0] for m in rows]
@@ -142,16 +183,16 @@ def _figures(r: dict, out: Path) -> bool:
     a1.set_yticks(list(y), names)
     a1.set_xlabel("measured gain / true gain (log, 1 = right)")
     for i, m in enumerate(rows):
-        a1.text(m["gain_ratio"] * 1.08, i, f"{m['gain_ratio']:.2f}×", va="center", color=ink, fontsize=8)
+        a1.text(m["gain_ratio"] * 1.08, i, f"{m['gain_ratio']:.2f}×", va="center", fontsize=8)
     a2.barh(y, [m["gaming_inflation_pct"] for m in rows], color=colors)
     a2.set_xlabel("inflation when gamed (%)")
     for i, m in enumerate(rows):
         a2.text(m["gaming_inflation_pct"] + 3, i, f"{m['gaming_inflation_pct']:+.0f}%", va="center",
-                color=ink, fontsize=8)
+                fontsize=8)
     a2.set_xlim(0, max(m["gaming_inflation_pct"] for m in rows) * 1.3)
-    fig.suptitle("E1: measurement concepts vs. simulated truth", x=0.01, ha="left", color=ink)
+    fig.suptitle("E1: measurement concepts vs. simulated truth", x=0.01, ha="left")
     fig.tight_layout()
-    fig.savefig(out / "methods.svg", metadata={"Date": None})
+    fig.savefig(out / f"methods{suffix}.svg", metadata=meta)
     plt.close(fig)
 
     fig, ax = plt.subplots(figsize=(7, 2.8))
@@ -162,12 +203,12 @@ def _figures(r: dict, out: Path) -> bool:
     ax.set_yticks(range(len(r["e3"])), [s["scenario"] for s in r["e3"]])
     ax.set_xscale("log")
     ax.set_xticks([1, 1.25, 1.5, 2, 3, 5, 10], ["1", "1.25", "1.5", "2", "3", "5", "10"])
-    ax.axvspan(3, 10, color="#fee2e2", zorder=0)
-    ax.text(3.1, len(r["e3"]) - 0.6, "v1.0 'typical' range", color="#991b1b")
+    ax.axvspan(3, 10, color=t["warn"], zorder=0)
+    ax.text(3.1, len(r["e3"]) - 0.6, "v1.0 'typical' range", color=t["warn_ink"])
     ax.set_xlabel("AP ratio (bar: worker 10th–90th pct, dot: organisation median)")
-    ax.set_title("E3: where AP ratios sit in 2026", loc="left", color=ink)
+    ax.set_title("E3: where AP ratios sit in 2026", loc="left")
     fig.tight_layout()
-    fig.savefig(out / "calibration.svg", metadata={"Date": None})
+    fig.savefig(out / f"calibration{suffix}.svg", metadata=meta)
     plt.close(fig)
 
     fig, ax = plt.subplots(figsize=(7, 3.2))
@@ -175,14 +216,13 @@ def _figures(r: dict, out: Path) -> bool:
     ax.plot([x["spend_eur"] for x in c], [x["marginal_cost_per_ap"] for x in c], "o-", color=accent,
             label="marginal cost per extra AP")
     ax.axhline(r["e5"]["loaded_cost_eur"], color=ink, ls="--", lw=0.8, label="one hire, fully loaded")
-    ax.axhspan(16, 560, color="#fee2e2", label="v1.0 claim (€16–€560)")
+    ax.axhspan(16, 560, color=t["warn"], label="v1.0 claim (€16–€560)")
     ax.set_xscale("log")
     ax.set_yscale("log")
     ax.set_xlabel("AI spend per FTE per year (€)")
     ax.set_ylabel("€ per additional AP per year")
     ax.legend(frameon=False)
-    ax.set_title("E5: the cost of agentpower", loc="left", color=ink)
+    ax.set_title("E5: the cost of agentpower", loc="left")
     fig.tight_layout()
-    fig.savefig(out / "cost-curve.svg", metadata={"Date": None})
+    fig.savefig(out / f"cost-curve{suffix}.svg", metadata=meta)
     plt.close(fig)
-    return True

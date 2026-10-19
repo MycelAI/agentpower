@@ -1,0 +1,47 @@
+name: Measured case
+description: Submit an AP-Q / AP-C measurement from a real team.
+labels: [documentation]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Cases are added only if they follow the [measurement protocol](https://github.com/MycelAI/agentpower/blob/main/docs/measurement.md). Self-estimates and revenue per head are not AP measurements. Anonymous submissions are fine; do not post confidential or personal data. Submissions are published under CC BY-SA 4.0.
+  - type: input
+    id: role
+    attributes:
+      label: Role
+      placeholder: claims handling
+    validations:
+      required: true
+  - type: input
+    id: report-line
+    attributes:
+      label: Report line
+      description: In the format from definition.md §3.
+      placeholder: "AP-Q 1.14 [90% CI 1.02–1.27] · DiD control · 80 audits · FY2025 vs FY2022 · role: claims handling"
+    validations:
+      required: true
+  - type: input
+    id: capacity
+    attributes:
+      label: AP-C (capacity), if measured
+      placeholder: "1.37"
+  - type: textarea
+    id: method
+    attributes:
+      label: Method
+      description: Deliverables and effort weights, audit rubric and sample, FTE counting, baseline and control group.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Organisation size and sector (approximate is fine), AI tools and how they were introduced, anything that could bias the result.
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmation
+      options:
+        - label: I am allowed to share these figures, and they contain no confidential or personal data.
+          required: true

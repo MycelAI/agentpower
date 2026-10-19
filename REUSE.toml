@@ -1,0 +1,22 @@
+# SPDX-FileCopyrightText: 2026 Alphin Tom / Mycel UG (haftungsbeschränkt)
+#
+# SPDX-License-Identifier: MIT
+
+# Licensing for files that cannot carry a comment header, or that are
+# generated and would lose one when regenerated. See LICENSE for the scope.
+version = 1
+
+[[annotations]]
+path = [
+    "docs/simulation-results.md",
+    "docs/figures/**",
+    "results/results.json",
+    "examples/tasks.csv",
+]
+SPDX-FileCopyrightText = "2026 Alphin Tom / Mycel UG (haftungsbeschränkt)"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+[[annotations]]
+path = ".github/**"
+SPDX-FileCopyrightText = "2026 Alphin Tom / Mycel UG (haftungsbeschränkt)"
+SPDX-License-Identifier = "MIT"

@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Alphin Tom / Mycel UG (haftungsbeschränkt)
+#
+# SPDX-License-Identifier: MIT
+
 [project]
 name = "agentpower"
 version = "2.0.0"
@@ -5,8 +9,8 @@ description = "Reference estimators and Monte Carlo simulation for the Agentpowe
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
-license-files = ["LICENSE-CODE"]
-authors = [{ name = "Alphin Tom", email = "alphin@mycel-ai.de" }]
+license-files = ["LICENSE", "LICENSE-CODE", "LICENSES/*.txt"]
+authors = [{ name = "Alphin Tom", email = "dev@mycel-ai.de" }]
 keywords = ["agentpower", "AI productivity", "knowledge work", "measurement", "monte carlo"]
 dependencies = ["numpy>=1.26"]
 

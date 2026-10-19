@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 Alphin Tom / Mycel UG (haftungsbeschränkt)
+
+SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+
 # Evidence Review
 
 State of the research as of October 2026, and how it calibrates the simulation. Full references are in [references.bib](../references.bib). Speed-ups are written as time ratios: a 40% time reduction is 1/(1 − 0.40) = 1.67×.

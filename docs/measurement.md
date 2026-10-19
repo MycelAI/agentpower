@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 Alphin Tom / Mycel UG (haftungsbeschränkt)
+
+SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+
 # Measuring Agentpower: Protocol
 
 Specification 2.0 · the procedure behind AP-Q and AP-C in [definition.md](definition.md).
