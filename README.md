@@ -1,176 +1,145 @@
 # Agentpower (AP)
 
-**A unit of cognitive work output for the AI age.**
+**A unit of cognitive work output for the AI age.** Specification 2.0 · October 2026
 
-> **One agentpower (AP)** equals the total cognitive output of one knowledge worker, working full-time for one year, without AI assistance.
+> **One agentpower (AP)** is the quality-adjusted output of one full-time-equivalent year of knowledge work in a given role, at that role's productivity without generative AI.
 
----
-
-## Why This Exists
-
-For 250 years, **horsepower** has been the universal unit for mechanical work output. James Watt invented it in 1782 not as a physics term, but as a translation layer: a way to help factory owners compare steam engines to the horses they already understood.
-
-We need the same thing for cognitive work.
-
-AI tokens are transforming the economics of knowledge work the way coal transformed the economics of physical work. But we're measuring the wrong thing. Token consumption tells you how much fuel was burned, not how much work was done. That's like measuring a factory by its coal bill.
-
-**Agentpower** measures what matters: the total cognitive output of a human-AI system, benchmarked against what one unaided human produces.
+An **AP ratio** of 1.3 means each FTE now delivers 30% more audited value than the same role did unaided.
 
 ---
 
-## The Definition
+## Why this exists
+
+In 1783 James Watt needed to sell steam engines to people who owned horses, so he defined a horsepower: 33,000 foot-pounds a minute. It was a translation layer. It let a mill owner compare a machine to the animals in his stable.
+
+Knowledge work needs the same thing now. Token bills tell you how much fuel was burned, not how much work was done; that is like judging a factory by its coal bill. Agentpower measures the work: what a human–AI system delivers, against what the same role delivered without AI.
+
+## What changed in 2.0
+
+Version 1.0 (April 2026) introduced the idea. Version 2.0 keeps the idea and rebuilds the measurement, after a review of the evidence and a Monte Carlo study of eight candidate methods across 1,500 simulated organisations. In short:
+
+| | 1.0 | 2.0 |
+|---|---|---|
+| Typical AP ratio | 3–10 | **1.02–1.10** for a typical 2026 organisation; 1.1–1.35 for integrated teams; up to ~2 at the agentic frontier |
+| How to measure | Estimate the headcount you'd need without AI | **AP-Q**: quality-audited output per FTE against a control group, with a confidence interval, plus **AP-C**: task-based capacity |
+| Cost of one extra AP | €16–€560/year in tokens | **€17,000–€45,000/year** all-in, against ~€85,000 for a hire |
+| Production function | `Y = f(L × T)` (zero output without tokens) | Task-based Amdahl form; reduces to the baseline when AI is absent |
+| Evidence | Klarna revenue per head, a CTO anecdote | 20+ controlled and population studies, see [evidence.md](docs/evidence.md) |
+
+The full list is in [CHANGELOG.md](CHANGELOG.md).
+
+## The two measures
 
 ```
-Agentpower (AP)
+AP-Q (realised) = output per FTE now / output per FTE at baseline
+                  × audited quality now / audited quality at baseline
+                  ÷ drift of a control group
 
-Unit:    1 AP = the annual cognitive output of one full-time knowledge worker,
-         unaided by AI.
+AP-C (capacity) = 1 / Σ (time share of task i / AI speed-up on task i)
 
-Scope:   Measures the combined output of a human operator + AI tools,
-         not the AI alone.
-
-Baseline: A knowledge worker without AI assistance operates at 1.0 AP.
+Absorption      = (AP-Q − 1) / (AP-C − 1)
 ```
 
-## The AP Ratio
+AP-Q is the headline: what actually got delivered. AP-C is the diagnostic: how far the role could go if every saved minute became output. Their ratio shows where the gains leak away: unused time, review queues, demand. Report them like this:
 
 ```
-AP Ratio = Total Cognitive Output ÷ Human Headcount
+AP-Q 1.14 [90% CI 1.02–1.27] · DiD control · 80 audits · FY2025 vs FY2022 · role: claims handling
 ```
 
-| AP Ratio | What It Means |
-|----------|---------------|
-| 1.0 | No AI amplification. Pre-2023 baseline. |
-| 2.0–3.0 | Early AI adoption. Routine tasks augmented. |
-| 3.0–5.0 | Systematic AI integration across workflows. |
-| 5.0–8.0 | Deep human-AI collaboration. Workflow redesign. |
-| 8.0–10.0+ | Expert operator with full AI stack. Rare today. |
+How to run it: [docs/measurement.md](docs/measurement.md).
 
-## The Formula
+## Stage bands
 
-The old production function:
+| AP | Stage | Where it is seen in 2026 |
+|---|---|---|
+| < 0.98 | Below baseline | ~15% of individual workers in a typical organisation lose time to AI |
+| 0.98–1.02 | Baseline | Within noise of no effect |
+| 1.02–1.10 | Assisted | Typical organisation; matches measured time savings of 3–5% |
+| 1.10–1.35 | Integrated | High adoption, redesigned workflows, exposed roles |
+| 1.35–2.0 | Redesigned | Agentic frontier teams |
+| 2.0–4.0 | Delegated | Not yet observed organisation-wide with rigorous measurement |
+| ≥ 4.0 | Speculative | Needs AI to remove >80% of baseline time, all of it reused |
 
-```
-Output ≈ Labour
-```
+The reason 3–10 is so far away is Amdahl's law. To reach AP 3, AI must remove two thirds of a role's working time *and* the organisation must turn all of it into output. A fivefold speed-up on a task is common; a fivefold speed-up on a job is not.
 
-The new production function:
+## The economics
 
-```
-Output ≈ Labour × Fuel
-```
+AI is two to five times cheaper per unit of output than hiring. That is a structural shift, and it is the honest form of the original argument. It is not a hundred times cheaper, and spend beyond a role's Amdahl ceiling buys almost nothing. See [docs/economics.md](docs/economics.md).
 
-Where **Labour** is human headcount and **Fuel** is AI token expenditure directed by human judgement.
+## Reference code and simulation
 
-## The Economics
-
-```
-Old model:  5 AP = 5 salaries                  → ~€310,000/year
-New model:  5 AP = 1 salary + 4 × token budget → ~€62,064–€64,240/year
-                   (€62,000 salary + €64–€2,240 in token fuel for 4 additional APs)
+```bash
+uv run agentpower estimate examples/tasks.csv --realised 1.12 --cost 2400
+uv run --extra plots agentpower simulate --report docs/simulation-results.md --figures docs/figures
 ```
 
-The additional agentpower (AP 2 through AP N) comes from tokens. The EUR/AP methodology shows the annual token cost for one full additional AP ranges from **€16 to €560/year** depending on model tier — so 4 additional APs cost €64–€2,240/year in fuel. Even at Claude Opus pricing, the new model is ~80% cheaper than five salaries. The human operator remains essential: they provide judgement, direction, context, and accountability. The AI provides scale.
+```python
+from agentpower import capacity_ap, quality_adjusted_ap, band
+capacity_ap([0.4, 0.3, 0.3], [2.0, 1.2, 1.0])   # 1.33
+```
 
-See the [EUR/AP pricing methodology](https://mycel-ai.de/agentpower) for the full per-model breakdown and pricing derivation.
+The simulation is fully reproducible (fixed seed, ~20 s). Method and findings: [docs/simulation.md](docs/simulation.md). Raw numbers: [docs/simulation-results.md](docs/simulation-results.md).
 
----
-
-## Real-World Reference Points
-
-| Organisation | Headcount Change | Revenue Change | Implied AP Ratio |
-|---|---|---|---|
-| Klarna (2022→2026) | −49% | +104% | ~3.5 |
-| AI-native SaaS companies (2025) | Lean teams | €0.9M–€3.7M rev/employee | 4.0–8.0 |
-| Meta top engineer (2026, per CTO) | 1 person | ~10× normal output | ~10.0 |
-| Pre-AI knowledge work baseline | — | ~€138K–€276K rev/employee | 1.0 |
-
----
-
-## Etymology
-
-**Agent** from Latin *agere*: to do, to act.
-
-The word carries a double meaning that maps precisely onto this transition:
-
-- **Old meaning:** A person who acts on behalf of another (lawyer, broker, consultant, administrator)
-- **New meaning:** An AI system that acts autonomously to complete tasks
-
-Agentpower measures what the two produce together.
-
----
-
-## Origin
-
-The concept was introduced in the essay ["Horsepower Then, Agentpower Now"](https://medium.com/alphin-pale-blue-dot/horsepower-then-agentpower-now-5bbeffabf3ef) published in *Pale Blue Dot* on Medium in April 2026.
-
-The core argument: AI tokens are to knowledge work what coal was to physical work — a cheap, abundant fuel that transforms the economics of production from linear (output proportional to headcount) to multiplicative (output proportional to human judgement × token fuel).
-
----
-
-## How to Use This
-
-### For organisations
-Calculate your AP ratio. If it's 1.0, you're operating without amplification. Estimate what a token budget starting at €16–€112/year per knowledge worker (budget to mid-tier models) would do to your output. Even at premium frontier models, one additional full AP costs under €560/year in tokens — a fraction of a salary. That's your path to 2.0+. Use the [AP Calculator](examples/ap-calculator.md) to run the numbers.
-
-### For policymakers
-Track AP ratios across sectors and regions as a leading indicator of economic transformation. Invest in training and institutional support — the constraint is no longer access to the engine, but the ability to operate it.
-
-### For individuals
-Your value is shifting from raw output to judgement, direction, and the ability to operate AI systems effectively. A professional at 5 AP is not five times busier. They're five times more capable.
-
-### For researchers
-We need better methods for measuring cognitive output across professions. The AP framework is intentionally simple — it's a starting point, not an endpoint. Contributions toward domain-specific AP benchmarks are welcome.
-
----
-
-## Project Structure
+## Project structure
 
 ```
 agentpower/
-├── README.md              ← You are here
-├── LICENSE                 ← CC BY-SA 4.0
-├── CITATION.cff            ← How to cite this work
-├── CONTRIBUTING.md         ← How to contribute
-├── references.bib          ← Full BibTeX reference library (16 sources)
+├── README.md
+├── CHANGELOG.md
+├── CITATION.cff
+├── CONTRIBUTING.md
+├── LICENSE              ← CC BY-SA 4.0 (text)
+├── LICENSE-CODE         ← MIT (code)
+├── references.bib
+├── pyproject.toml
 ├── docs/
-│   ├── essay.md            ← Links to Medium publication (canonical)
-│   ├── definition.md       ← Formal definition and specification
-│   └── faq.md              ← Common questions and critiques
-└── examples/
-    └── ap-calculator.md    ← Simple worksheet for estimating AP ratio
+│   ├── definition.md          ← formal specification 2.0
+│   ├── measurement.md         ← how to measure AP-Q and AP-C
+│   ├── economics.md           ← cost of an additional AP
+│   ├── evidence.md            ← state of research, October 2026
+│   ├── simulation.md          ← how the concepts were chosen
+│   ├── simulation-results.md  ← generated numbers
+│   ├── figures/               ← generated figures
+│   ├── faq.md
+│   └── essay.md               ← link to the original essay
+├── examples/
+│   ├── ap-calculator.md       ← worksheet
+│   └── tasks.csv              ← sample task timing input
+├── src/agentpower/            ← estimators, model, experiments, CLI
+├── tests/
+└── results/results.json       ← raw simulation output
 ```
 
----
+## How to use this
+
+**Organisations.** Measure one role properly before you measure the company. Report AP-Q with its interval and AP-C beside it. If AP-C is high and AP-Q is not, your constraint is no longer the tools.
+
+**Policymakers.** Track AP-Q by sector from audited samples, not from surveys or token sales. The adoption and reallocation levers (E6) are training and management, which is where public support has the most leverage.
+
+**Individuals.** Your value is moving from producing to judging, directing and checking. The workers who gain most are those who know where the frontier is.
+
+**Researchers.** The open problems are portable audit rubrics, role-level baselines, and measuring agentic delegation directly. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Origin
+
+The concept was introduced in the essay ["Horsepower Then, Agentpower Now"](https://medium.com/alphin-pale-blue-dot/horsepower-then-agentpower-now-5bbeffabf3ef) (*Pale Blue Dot*, April 2026). Methodology page: [mycel-ai.de/agentpower](https://mycel-ai.de/agentpower).
 
 ## Citation
 
 ```bibtex
-@article{tom2026agentpower,
-  title     = {Horsepower Then, Agentpower Now},
-  author    = {Tom, Alphin},
-  journal   = {Pale Blue Dot},
-  year      = {2026},
-  month     = {April},
-  url       = {https://medium.com/alphin-pale-blue-dot/horsepower-then-agentpower-now-5bbeffabf3ef}
+@techreport{tom2026agentpower2,
+  title       = {Agentpower: A Unit of Cognitive Work Output for the AI Age. Specification 2.0},
+  author      = {Tom, Alphin},
+  institution = {Mycel UG (haftungsbeschr{\"a}nkt)},
+  year        = {2026},
+  month       = oct,
+  url         = {https://github.com/MycelAI/agentpower}
 }
 ```
 
----
-
 ## License
 
-This work is licensed under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
-
-You are free to share, adapt, and build upon this work, including for commercial purposes, as long as you give appropriate credit and distribute your contributions under the same license.
-
-The term "agentpower" and the AP ratio framework are released into the public domain for universal use. No trademark is claimed or intended. The goal is adoption, not ownership.
-
----
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md). We welcome domain-specific AP benchmarks, translations, case studies, and critiques.
+Text: [CC BY-SA 4.0](LICENSE). Code: [MIT](LICENSE-CODE). The word "agentpower" and the ideas are free for anyone to use; no trademark is claimed. The goal is adoption, not ownership.
 
 ---
 

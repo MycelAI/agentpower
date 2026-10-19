@@ -1,6 +1,6 @@
 # Horsepower Then, "Agentpower" Now
 
-**The full essay is published on Medium:**
+**The original essay is published on Medium:**
 
 > [medium.com/alphin-pale-blue-dot/horsepower-then-agentpower-now-5bbeffabf3ef](https://medium.com/alphin-pale-blue-dot/horsepower-then-agentpower-now-5bbeffabf3ef)
 
@@ -8,8 +8,11 @@
 
 ---
 
-The essay introduces the agentpower concept, the AP Ratio, the EUR/AP methodology, and the historical parallel with horsepower and the Industrial Revolution.
+The essay introduced the agentpower concept, the AP ratio and the historical parallel with horsepower and the Industrial Revolution. It reflects specification 1.0. Where its numbers differ from specification 2.0 (typical AP ratios, the token-based cost of an AP, the Klarna example), the specification is current.
 
-For the formal definition, see [definition.md](definition.md).
-For the EUR/AP pricing methodology, see [mycel-ai.de/agentpower](https://mycel-ai.de/agentpower).
-For the FAQ, see [faq.md](faq.md).
+- Formal definition: [definition.md](definition.md)
+- Measurement protocol: [measurement.md](measurement.md)
+- Economics: [economics.md](economics.md)
+- Evidence and corrections: [evidence.md](evidence.md)
+- FAQ: [faq.md](faq.md)
+- Methodology page: [mycel-ai.de/agentpower](https://mycel-ai.de/agentpower)

@@ -26,6 +26,10 @@ Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 
 ---
 
-NOTE: The term "agentpower" and the AP ratio framework are explicitly
-released into the public domain. No trademark is claimed. The intent
-is universal adoption.
+SCOPE: This license covers the text, documentation and figures in this
+repository. The source code (src/, tests/ and pyproject.toml) is licensed
+under the MIT License, see LICENSE-CODE.
+
+The word "agentpower" and the ideas and formulas in the specification are
+free for anyone to use. No trademark is claimed. The intent is universal
+adoption.
