@@ -48,7 +48,7 @@ est = quality_adjusted_ap(
     fte_now=21.5, fte_base=22.0,
     control_drift=1.04,                         # control team's own change
 )
-print(est)  # 1.27 [90% CI 1.16-1.39]
+print(est)  # with equal audit means and 80 scores (sd 0.25) per period: ~1.28 [90% CI 1.19-1.37]
 ```
 
 The interval is a percentile bootstrap over the audit scores. It does not include deliverable-mix noise, so treat it as a lower bound on uncertainty.
