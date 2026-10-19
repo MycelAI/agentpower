@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 220" width="960" height="220" role="img" aria-labelledby="t d">
+<!-- SPDX-FileCopyrightText: 2026 Alphin Tom / Mycel UG (haftungsbeschränkt) -->
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<title id="t">Agentpower (AP)</title>
+<desc id="d">A unit of cognitive work output for the AI age. Specification 2.0. A curve rises with AI speed-up and flattens below a ceiling, the Amdahl limit on agentpower.</desc>
+<rect width="960" height="220" rx="18" fill="#f8fafc"/>
+<g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+<rect x="48" y="58" width="104" height="104" rx="22" fill="#0d9488"/>
+<text x="100" y="128" text-anchor="middle" font-size="46" font-weight="700" fill="#f8fafc" letter-spacing="-1">AP</text>
+<text x="180" y="108" font-size="52" font-weight="700" fill="#0f172a" letter-spacing="-1.5">Agentpower</text>
+<text x="182" y="144" font-size="20" fill="#475569">A unit of cognitive work output for the AI age</text>
+<text x="182" y="174" font-size="14" fill="#0d9488" font-weight="600" letter-spacing="1.5">SPECIFICATION 2.0 · OCTOBER 2026</text>
+</g>
+<g transform="translate(640 50)">
+<line x1="0" y1="120" x2="270" y2="120" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="0" y1="0" x2="0" y2="120" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="0" y1="0" x2="270" y2="0" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 5"/>
+<polyline points="0.0,120.0 36.0,100.0 61.5,85.7 81.3,75.0 97.4,66.7 111.1,60.0 122.9,54.5 133.4,50.0 142.7,46.2 151.2,42.9 158.9,40.0 166.0,37.5 172.6,35.3 178.7,33.3 184.4,31.6 189.8,30.0 194.9,28.6 199.7,27.3 204.2,26.1 208.5,25.0 212.7,24.0 216.6,23.1 220.4,22.2 224.0,21.4 227.5,20.7 230.8,20.0 234.0,19.4 237.2,18.8 240.2,18.2 243.1,17.6 245.9,17.1 248.6,16.7 251.3,16.2 253.8,15.8 256.3,15.4 258.8,15.0 261.1,14.6 263.4,14.3 265.7,14.0 267.9,13.6 270.0,13.3" fill="none" stroke="#0d9488" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#475569">
+<text x="270" y="-8" text-anchor="end">Amdahl ceiling</text>
+<text x="270" y="138" text-anchor="end">AI speed-up on tasks →</text>
+<text x="-8" y="124" text-anchor="end">1</text>
+</g>
+</g>
+</svg>

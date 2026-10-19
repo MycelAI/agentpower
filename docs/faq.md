@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 Alphin Tom / Mycel UG (haftungsbeschränkt)
+
+SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+
 # Frequently Asked Questions
 
 ## The concept

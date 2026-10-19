@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Alphin Tom / Mycel UG (haftungsbeschränkt)
+#
+# SPDX-License-Identifier: MIT
+
 """Monte Carlo experiments behind docs/simulation.md."""
 
 from __future__ import annotations

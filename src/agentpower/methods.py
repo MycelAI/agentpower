@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Alphin Tom / Mycel UG (haftungsbeschränkt)
+#
+# SPDX-License-Identifier: MIT
+
 """Candidate ways to measure an organisation's AP ratio.
 
 Each method sees only what a real organisation could observe, with the

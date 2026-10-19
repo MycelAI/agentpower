@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Alphin Tom / Mycel UG (haftungsbeschränkt)
+#
+# SPDX-License-Identifier: MIT
+
 """Command line: `agentpower simulate` and `agentpower estimate`."""
 
 from __future__ import annotations

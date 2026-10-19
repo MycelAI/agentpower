@@ -1,0 +1,26 @@
+name: Critique or proposal
+description: Challenge an assumption, or propose a change to the definition, measures, bands or simulation.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: Which assumption or rule, and why it is wrong or incomplete.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: What should replace it. If possible, say how to test it, for example as a new method or gaming channel in experiment E1.
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Would existing AP figures stay comparable?
+      options:
+        - "Yes"
+        - "No, this needs a major version"
+        - Not sure
+    validations:
+      required: true

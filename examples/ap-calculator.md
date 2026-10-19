@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 Alphin Tom / Mycel UG (haftungsbeschränkt)
+
+SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+
 # AP Worksheet
 
 A one-page version of the [measurement protocol](../docs/measurement.md) for a single role. It works on paper or in a spreadsheet; the same arithmetic is in `agentpower estimate`.

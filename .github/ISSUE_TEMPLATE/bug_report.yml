@@ -1,0 +1,38 @@
+name: Bug in the code
+description: The agentpower package, CLI or simulation does something wrong.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For a wrong number or claim in the specification, use **Evidence or correction**. For security problems, follow [SECURITY.md](https://github.com/MycelAI/agentpower/blob/main/SECURITY.md) instead.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of `agentpower --version`, or the commit you ran.
+      placeholder: agentpower 2.0.0
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: Python 3.12, Windows 11, uv 0.13
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: The exact command or code, and any input file (trimmed).
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual result
+      description: What you expected, what happened, and the full error output.
+    validations:
+      required: true

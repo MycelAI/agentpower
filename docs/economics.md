@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 Alphin Tom / Mycel UG (haftungsbeschränkt)
+
+SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+
 # The Economics of Agentpower
 
 Specification 2.0 · replaces the 1.0 "EUR/AP" token methodology.

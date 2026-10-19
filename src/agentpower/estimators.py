@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Alphin Tom / Mycel UG (haftungsbeschränkt)
+#
+# SPDX-License-Identifier: MIT
+
 """Reference estimators for the Agentpower (AP) framework, specification v2.0.
 
 All functions are plain numpy so they can be copied into a spreadsheet or

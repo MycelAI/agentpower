@@ -1,0 +1,24 @@
+name: Evidence or correction
+description: A new study, or a correction to a number or claim in the docs.
+labels: [documentation]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Where
+      description: File and section, if this corrects something.
+      placeholder: "docs/evidence.md, §5 The 1.0 reference points, corrected"
+  - type: textarea
+    id: claim
+    attributes:
+      label: What should change
+      description: The current text, and what it should say.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: Full citation with DOI or URL, study design (RCT, field experiment, panel, survey) and sample size. Add a BibTeX entry if you can.
+    validations:
+      required: true

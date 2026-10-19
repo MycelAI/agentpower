@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Alphin Tom / Mycel UG (haftungsbeschränkt)
+#
+# SPDX-License-Identifier: MIT
+
 """Synthetic world for the Agentpower simulations.
 
 A worker splits baseline time across task types. On each task AI may be

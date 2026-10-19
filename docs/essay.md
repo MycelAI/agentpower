@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 Alphin Tom / Mycel UG (haftungsbeschränkt)
+
+SPDX-License-Identifier: CC-BY-SA-4.0
+-->
+
 # Horsepower Then, "Agentpower" Now
 
 **The original essay is published on Medium:**
